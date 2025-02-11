@@ -18,8 +18,9 @@ class TodoAPIView(generics.RetrieveUpdateDestroyAPIView):
 #Cambiar las vistas genericas por vistas conjunto de vistas
 
 class TodosViewSet(viewsets.ModelViewSet):
-    queryset = Todo.objects.all()
+    queryset = Todo.objects.order_by('-id')
     #serialiizer_class = serializers.TodoSerializer
     
     def get_serializer_class(self):
-        return serializers.TodoSerializer
+        serialiizer_class = serializers.TodoSerializer
+        return serialiizer_class
